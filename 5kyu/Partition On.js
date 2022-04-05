@@ -15,4 +15,33 @@ function isEven(n) {return n % 2 == 0}
 var i = partitionOn(isEven, items);
 // items should now be [1, 3, 5, 2, 4, 6]
 // i     should now be 3
+
+
+// partition the items array so that all values for which pred returns true are
+// at the end, returning the index of the first true value
 */
+
+let items = [1, 2, 3, 4, 5, 6];
+
+function isEven(n) {
+  return n % 2 == 0;
+}
+
+function partitionOn(pred, items) {
+  let arrStart = [];
+  let arrEnd = [];
+  for (let i of items) {
+    if (!pred(items[i])) {
+      arrStart.push(i);
+    } else arrEnd.push(i);
+  }
+  console.log(arrStart);
+  console.log(arrEnd);
+  items.splice(0, items.length, ...arrEnd, ...arrStart);
+  console.log(items);
+  return arrStart.length;
+}
+
+console.log(partitionOn(isEven, items));
+
+// does not pass tests!!
