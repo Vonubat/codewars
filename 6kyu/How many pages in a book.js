@@ -11,3 +11,18 @@ Be aware that you'll get enormous books having up to 100.000 pages.
 
 All inputs will be valid.
 */
+
+function amountOfPages(summary) {
+  let str = "";
+  let arr = [];
+  for (let i = 1; str.length < summary; i++) {
+    str += i;
+    arr.push(i);
+  }
+  // error with console.log: I get Max Buffer Size Reached (1.5 MiB)
+  // console.log(arr[arr.length - 1]);
+  // console.log(str);
+  return arr[arr.length - 1];
+}
+
+amountOfPages(25);
