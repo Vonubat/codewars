@@ -9,7 +9,7 @@ Help Johnny by writing a function, that takes the amount of handshakes and retur
 */
 
 function getParticipants(handshakes) {
-  let farmers = 1;
+  let farmers = 0;
   for (let i = 0; i < handshakes; ) {
     i = i + farmers++;
   }
