@@ -24,32 +24,32 @@ Cat.averageWeight() method should give the average weight of all cat instances c
 Must use Object.defineProperty */
 
 // Let's make a Cat constructor!
-var Cat = (function () {
-  let storageOfCats = [];
+const Cat = (function () {
+  const cats = {};
 
-  function constructor(name, weight) {
-    if (!name || !weight) throw new Error('name or weight not specified');
-    this.name = name;
-    Object.defineProperty(this, 'weight', {
-      get() {
-        return weight;
-      },
-      set(value) {
-        weight = value;
-      },
-    });
+  class CatFactory {
+    constructor(name, weight) {
+      if (!name || !weight) {
+        throw new Error();
+      }
 
-    storageOfCats.push(this);
+      this.name = name;
+      let newWeight = weight;
+      cats[name] = weight;
+
+      Object.defineProperty(this, 'weight', {
+        get: () => newWeight,
+        set: (value) => {
+          newWeight = value;
+          cats[name] = value;
+        },
+      });
+    }
+
+    static averageWeight() {
+      return Object.values(cats).reduce((acc, item) => acc + item) / Object.keys(cats).length;
+    }
   }
 
-  constructor.averageWeight = function () {
-    let sumOfWeights = 0;
-    for (const cat of storageOfCats) {
-      sumOfWeights += cat.weight;
-    }
-    let result = sumOfWeights / storageOfCats.length;
-    return result;
-  };
-
-  return constructor;
+  return CatFactory;
 })();
