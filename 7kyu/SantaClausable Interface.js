@@ -23,11 +23,7 @@ isSantaClausable(santa); // must return TRUE
 isSantaClausable(notSanta); // must return FALSE */
 
 function isSantaClausable(obj) {
-  const interfaceMethods = new Set([
-    'sayHoHoHo',
-    'distributeGifts',
-    'goDownTheChimney',
-  ]);
+  const interfaceMethods = new Set(['sayHoHoHo', 'distributeGifts', 'goDownTheChimney']);
 
   for (const method in obj) {
     if (interfaceMethods.has(method) && typeof obj[method] === 'function') {
@@ -35,9 +31,5 @@ function isSantaClausable(obj) {
     }
   }
 
-  if (interfaceMethods.size === 0) {
-    return true;
-  } else {
-    return false;
-  }
+  return interfaceMethods.size === 0 ? true : false;
 }
