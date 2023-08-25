@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /*
 We want to create a function, which returns an array of functions, which return their index in the array. For better understanding, here an example:
 
@@ -10,12 +10,10 @@ We already implemented that function, but when we actually run the code, the res
 */
 
 function createFunctions(n) {
-  let callbacks = [];
+  const callbacks = [];
 
   for (let i = 0; i < n; i++) {
-    callbacks.push(function () {
-      return i;
-    });
+    callbacks.push(() => i);
   }
 
   return callbacks;
