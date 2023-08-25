@@ -11,9 +11,13 @@ obj1.test = 1;
 obj2.test; // => 1 */
 
 // let instance;
-var Singleton = function () {
-  if (!Singleton.instance) {
-    Singleton.instance = this;
+
+class Singleton {
+  constructor() {
+    if (!Singleton.instance) {
+      Singleton.instance = this;
+    }
+
+    return Singleton.instance;
   }
-  return Singleton.instance;
-};
+}
