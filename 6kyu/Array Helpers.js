@@ -22,101 +22,25 @@ numbers.even();    // must return [2, 4]
 numbers.odd();     // must return [1, 3, 5] */
 
 Array.prototype.square = function () {
-  let temp = [];
-  for (const item of this) {
-    if (typeof item === 'number') {
-      temp.push(Math.pow(item, 2));
-    } else {
-      temp.push(item);
-    }
-  }
-  // console.log(temp);
-  return temp;
+  return this.map((it) => Math.pow(it, 2));
 };
 
 Array.prototype.cube = function () {
-  let temp = [];
-  for (const item of this) {
-    if (typeof item === 'number') {
-      temp.push(Math.pow(item, 3));
-    } else {
-      temp.push(item);
-    }
-  }
-  // console.log(temp);
-  return temp;
+  return this.map((it) => Math.pow(it, 3));
 };
 
 Array.prototype.average = function () {
-  let temp = [];
-  if (!this.length) {
-    return NaN;
-  }
-  for (const item of this) {
-    if (typeof item === 'number') {
-      temp.push(item);
-    } else {
-      continue;
-    }
-  }
-  const average = temp.reduce((sum, current) => sum + current, 0) / temp.length;
-  // console.log(average);
-  return average;
+  return this.reduce((sum, current) => sum + current, 0) / this.length;
 };
 
 Array.prototype.sum = function () {
-  let temp = [];
-  if (!this.length) {
-    return NaN;
-  }
-  for (const item of this) {
-    if (typeof item === 'number') {
-      temp.push(item);
-    } else {
-      continue;
-    }
-  }
-  const sum = temp.reduce((sum, current) => sum + current, 0);
-  // console.log(sum);
-  return sum;
+  return this.reduce((sum, current) => sum + current, 0);
 };
 
 Array.prototype.even = function () {
-  let temp = [];
-  if (!this.length) {
-    return NaN;
-  }
-  for (const item of this) {
-    if (typeof item === 'number' && !(item % 2)) {
-      temp.push(item);
-    } else {
-      continue;
-    }
-  }
-  // console.log(temp);
-  return temp;
+  return this.filter((it) => typeof it === 'number' && !(it % 2));
 };
 
 Array.prototype.odd = function () {
-  let temp = [];
-  if (!this.length) {
-    return NaN;
-  }
-  for (const item of this) {
-    if (typeof item === 'number' && item % 2) {
-      temp.push(item);
-    } else {
-      continue;
-    }
-  }
-  // console.log(temp);
-  return temp;
+  return this.filter((it) => typeof it === 'number' && it % 2);
 };
-
-// let numbers = [1, 2, 3, 4, 5];
-// numbers.square();
-// numbers.cube();
-// numbers.average();
-// numbers.sum();
-// numbers.even();
-// numbers.odd();
