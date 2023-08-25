@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /*
 This time we want to write calculations using functions and get the results. Let's have a look at some examples:
 
@@ -17,8 +17,7 @@ eight(dividedBy(three()));
 */
 
 function expression(number, operation) {
-  if (!operation) return number;
-  return operation(number);
+  return operation ? operation(number) : number;
 }
 
 function zero(operation) {
@@ -53,24 +52,16 @@ function nine(operation) {
 }
 
 function plus(x) {
-  return function (y) {
-    return y + x;
-  };
+  return (y) => y + x;
 }
 function minus(x) {
-  return function (y) {
-    return y - x;
-  };
+  return (y) => y - x;
 }
 function times(x) {
-  return function (y) {
-    return y * x;
-  };
+  return (y) => y * x;
 }
 function dividedBy(x) {
-  return function (y) {
-    return Math.floor(y / x);
-  };
+  return (y) => Math.floor(y / x);
 }
 
 console.log(seven(times(five()))); // must return 35
